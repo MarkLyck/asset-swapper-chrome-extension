@@ -1,2 +1,5 @@
 .DS_Store
+node_modules
 webstore-images/.DS_Store
+.vscode
+dist

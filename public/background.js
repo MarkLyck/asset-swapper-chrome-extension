@@ -15,23 +15,33 @@ if (currVersion != prevVersion) {
 	localStorage['version'] = currVersion;
 }
 
+/**
+ * RegExp-escapes all characters in the given string.
+ */
+function regExpEscape (s) {
+	return s.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&');
+}
+  
+function wildcardToRegExp (s) {
+	return new RegExp('^' + s.split(/\*+/).map(regExpEscape).join('.*') + '$')
+}
 
 chrome.webRequest.onBeforeRequest.addListener(details => {
-	// source:destination
-	var mapping = JSON.parse(localStorage.configuration)
-	for (var source in mapping) {
-		var redirectTo = mapping[source]
-		if (redirectTo.status && details.url.indexOf(source) === 0) {
-			return { redirectUrl: redirectTo.url }
+	var rules = JSON.parse(localStorage.rules)
+	return rules.reduce((acc, rule) => {
+		const sourceRegex = wildcardToRegExp(rule.source)
+		if (rule.active && sourceRegex.test(details.url)) {
+			acc = { redirectUrl: rule.target }
 		}
-	}
+		return acc
+	}, {})
 }, {
 	urls: ["<all_urls>"]
 }, ["blocking"])
 
 function onInstall() {
 	if (typeof localStorage.configuration === "undefined") {
-		localStorage.configuration = "{}";
+		localStorage.rules = "[]";
 	}
 }
 

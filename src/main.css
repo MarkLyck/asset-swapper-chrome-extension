@@ -1,15 +1,11 @@
 body {
     margin: 0;
-}
-
-#wrap {
-    display: flex;
-    width: calc(800px - 48px);
-    padding: 16px 24px;
+    font-family: Helvetica;
 }
 
 .container {
-    width: 100%;
+    width: calc(800px - 48px);
+    padding: 16px 24px;
 }
 
 .fas {
@@ -47,6 +43,11 @@ input {
 
 input:focus {
     border-color: #27A5F9;
+}
+
+.input-error {
+    border-color: #ec1b5f;
+    color: #ec1b5f;
 }
 
 .sf-icon {
@@ -118,8 +119,10 @@ td {
     border-bottom: 1px solid #EFF1F4;
 }
 
-.source-cell, .to-cell, .from-head, .to-head {
-    width: 274px;
+.source-cell, .target-cell, .from-head, .target-head {
+    display: flex;
+    align-items: center;
+    width: 267px;
     overflow-x: scroll;
 }
 
@@ -128,23 +131,32 @@ td > a {
     text-decoration: none;
 }
 
+td > a:hover {
+    text-decoration: underline;
+}
+
+.ft-icon {
+    margin-right: 8px;
+    font-size: 1rem;
+}
+
 .actions-head {
     width: 76px;
 }
 
 .status-cell, .status-head {
-    width: 64px;
+    width: 77px;
 }
 
-.status-label:hover {
+.status-cell:hover {
     cursor: pointer;
 }
 
-.label-success {
+.status-active {
     color: #12D99E;
 }
 
-.label-disabled {
+.status-disabled {
     color: #ec1b5f;
 }
 
@@ -169,3 +181,13 @@ td > a {
     color: #ec1b5f;
 }
 
+
+
+.in-small {
+    margin-left: 8px;
+    font-size: 0.2rem;
+}
+
+.in-small > a {
+    color: #27A5F9;
+}

@@ -1,4 +1,8 @@
-assets-swapper-chrome-extension
+asset-swapper-chrome-extension
 ===============================
 
-Chrome extension that allows to swap asset files on any website. Useful i.e. when there is a need to debug a website with an unminified version of javascript.
+A chrome extension that allows you to swap asset files or urls on any website. Useful for example when you need to debug a site and want to inject an unminified version of JavaScript.
+
+Icons are shown to visualize what type of asset you're redirecting.
+
+You can use wildcards(*) to replace e.g. file hashes so you don't have to update it everytime a new build is run.
