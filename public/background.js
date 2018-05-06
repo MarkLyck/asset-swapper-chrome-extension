@@ -39,12 +39,6 @@ chrome.webRequest.onBeforeRequest.addListener(details => {
 	urls: ["<all_urls>"]
 }, ["blocking"])
 
-function onInstall() {
-	if (typeof localStorage.configuration === "undefined") {
-		localStorage.rules = "[]";
-	}
-}
-
 function getVersion() {
 	const details = chrome.app.getDetails()
 	return details.version
