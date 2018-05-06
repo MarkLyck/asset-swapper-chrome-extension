@@ -27,7 +27,7 @@ function wildcardToRegExp (s) {
 }
 
 chrome.webRequest.onBeforeRequest.addListener(details => {
-	var rules = JSON.parse(localStorage.rules)
+	const rules = JSON.parse(localStorage.rules)
 	return rules.reduce((acc, rule) => {
 		const sourceRegex = wildcardToRegExp(rule.source)
 		if (rule.active && sourceRegex.test(details.url)) {
@@ -46,6 +46,6 @@ function onInstall() {
 }
 
 function getVersion() {
-	var details = chrome.app.getDetails()
+	const details = chrome.app.getDetails()
 	return details.version
 }
