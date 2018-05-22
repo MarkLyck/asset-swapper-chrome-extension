@@ -1,44 +1,15 @@
 body {
-    margin: 0;
+    margin: 0 !important;
     font-family: Helvetica;
+    border-radius: 5px;
 }
 
 .container {
     width: calc(800px - 48px);
-    padding: 16px 24px;
-}
-
-.fas {
-    font-size: 1.2rem;
-    color: #27A5F9;
-}
-
-form {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 16px;
-}
-
-form > i {
-    margin: 0 8px;
-}
-
-.input-container {
-    flex: 1;
-    box-sizing: border-box;
-    position: relative;
 }
 
 input {
-    padding: 8px 16px;
-    padding-left: 28px;
     outline: none;
-    width: 100%;
-    font-size: 0.8rem;
-    border: 1px solid #D7D9DC;
-    color: #444444;
-    box-sizing: border-box;
 }
 
 input:focus {
@@ -76,118 +47,4 @@ button {
 
 button:hover {
     cursor: pointer;
-}
-
-.add-button {
-    margin-left: 8px;
-    padding: 8px 16px;
-    height: 100%;
-    color: #27A5F9;
-    font-weight: bold;
-    font-size: 0.8rem;
-    border: 1px solid #D7D9DC;
-}
-
-.add-button:hover {
-    background: #27A5F9;
-    color: #fff;
-    border-color: #27A5F9;
-}
-
-
-
-
-table {
-    width: 100%;
-    border-spacing: 0;
-}
-
-thead {
-    text-align: left;
-    font-weight: bold;
-    color: #444444;
-}
-
-
-th, td  {
-    padding: 16px 8px;
-    height: 16px;
-    float: left;
-}
-
-td {
-    border-bottom: 1px solid #EFF1F4;
-}
-
-.source-cell, .target-cell, .from-head, .target-head {
-    display: flex;
-    align-items: center;
-    width: 267px;
-    overflow-x: scroll;
-}
-
-td > a {
-    color: #444444;
-    text-decoration: none;
-}
-
-td > a:hover {
-    text-decoration: underline;
-}
-
-.ft-icon {
-    margin-right: 8px;
-    font-size: 1rem;
-}
-
-.actions-head {
-    width: 76px;
-}
-
-.status-cell, .status-head {
-    width: 77px;
-}
-
-.status-cell:hover {
-    cursor: pointer;
-}
-
-.status-active {
-    color: #12D99E;
-}
-
-.status-disabled {
-    color: #ec1b5f;
-}
-
-.actions-cell {
-    display: flex;
-    align-items: center;
-}
-
-.remove-entry {
-    display: flex;
-    align-items: center;
-    color: #ec1b5f;
-}
-
-.remove-entry > i, .edit-entry > i {
-    color: #27A5F9;
-    margin-right: 8px;
-    font-size: 1rem;
-}
-
-.remove-entry > i {
-    color: #ec1b5f;
-}
-
-
-
-.in-small {
-    margin-left: 8px;
-    font-size: 0.2rem;
-}
-
-.in-small > a {
-    color: #27A5F9;
 }

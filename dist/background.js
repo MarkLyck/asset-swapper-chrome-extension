@@ -15,6 +15,15 @@ if (currVersion != prevVersion) {
 	localStorage['version'] = currVersion;
 }
 
+
+function isURLValid(userInput) {
+    var res = userInput.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+    if(res == null)
+        return false;
+    else
+        return true;
+}
+
 /**
  * RegExp-escapes all characters in the given string.
  */
@@ -27,11 +36,19 @@ function wildcardToRegExp (s) {
 }
 
 chrome.webRequest.onBeforeRequest.addListener(details => {
-	var rules = JSON.parse(localStorage.rules)
+	const rules = JSON.parse(localStorage.rules)
 	return rules.reduce((acc, rule) => {
 		const sourceRegex = wildcardToRegExp(rule.source)
-		if (rule.active && sourceRegex.test(details.url)) {
-			acc = { redirectUrl: rule.target }
+		console.log(rule)
+		console.log('details.url', details.url)
+		console.log(wildcardToRegExp(rule.source))
+		console.log(rule.active, isURLValid(rule.source), sourceRegex.test(details.url), isURLValid(rule.target))
+		if (rule.active && sourceRegex.test(details.url) && isURLValid(rule.source) && isURLValid(rule.target)) {
+			let target = rule.target
+			if (!target.includes('http') && !target.includes('://')) {
+				target = `http://${target}`
+			}
+			acc = { redirectUrl: target }
 		}
 		return acc
 	}, {})
@@ -39,13 +56,7 @@ chrome.webRequest.onBeforeRequest.addListener(details => {
 	urls: ["<all_urls>"]
 }, ["blocking"])
 
-function onInstall() {
-	if (typeof localStorage.configuration === "undefined") {
-		localStorage.rules = "[]";
-	}
-}
-
 function getVersion() {
-	var details = chrome.app.getDetails()
+	const details = chrome.app.getDetails()
 	return details.version
 }

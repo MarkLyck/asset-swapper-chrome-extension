@@ -1,0 +1,91 @@
+.redirect {
+    padding: 8px 12px 8px 8px;
+    background: white;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 40px;
+    box-shadow: 0 1px 4px 1px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.status-container {
+    height: 24px;
+    width: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.status {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.status-active {
+    background: #12D99E;
+}
+
+.status-disabled {
+    background: #ec1b5f;
+}
+
+.file-type-icon {
+    margin: 0 8px 0 0;
+    color: #333333;
+}
+
+.url, .url-input {
+    width: calc(50% - 56px);
+}
+
+.url-input {
+    height: 100%;
+    padding: 0 8px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    border: 1px solid #C3C3C3;
+    border-radius: 2px;
+}
+
+.fa-angle-double-right {
+    margin: 0 8px;
+}
+
+.redirect i {
+    font-size: 16px;
+    width: 16px;
+}
+
+.actions-container {
+    display: flex;
+    align-items: center;
+    width: 56px;
+    justify-content: flex-end;
+    margin-left: 8px;
+}
+
+.actions-container i {
+    color: #C3C3C3;
+}
+
+.edit-entry:hover > i {
+    color: #27A5F9;
+}
+
+.remove-entry > i {
+    margin-left: 12px;
+}
+
+.remove-entry:hover > i {
+    color: #ec1b5f;
+}
+
+.save-entry:hover > i {
+    color: #12D99E;
+}
