@@ -13,11 +13,13 @@
 
 .extension-name {
     margin: 0;
+    font-size: 20px;
     color: #333333;
 }
 
 .num-of-redirects {
     margin: 0;
+    font-size: 14px;
     color: #8F8F8F;
 }
 
@@ -102,6 +104,7 @@
 }
 
 .url, .url-input {
+    font-size: 16px;
     width: calc(50% - 56px);
 }
 
@@ -109,7 +112,6 @@
     height: 100%;
     padding: 0 8px;
     box-sizing: border-box;
-    font-size: 1rem;
     border: 1px solid #C3C3C3;
     border-radius: 2px;
 }
@@ -120,6 +122,7 @@
 
 .redirect i {
     font-size: 16px;
+    width: 16px;
 }
 
 .actions-container {

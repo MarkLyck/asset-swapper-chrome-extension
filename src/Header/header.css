@@ -13,11 +13,13 @@
 
 .extension-name {
     margin: 0;
+    font-size: 20px;
     color: #333333;
 }
 
 .num-of-redirects {
     margin: 0;
+    font-size: 14px;
     color: #8F8F8F;
 }
 
