@@ -12,7 +12,7 @@ class Popup extends Component {
 
 		this.state = {
             rules: JSON.parse(localStorage.getItem('rules')) || [],
-            rulesActive: true,
+            rulesActive: localStorage.getItem(rulesActive) || true,
         }
 	}
 
