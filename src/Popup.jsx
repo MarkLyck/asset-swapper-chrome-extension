@@ -12,6 +12,7 @@ class Popup extends Component {
 
 		this.state = {
             rules: JSON.parse(localStorage.getItem('rules')) || [],
+            rulesActive: true,
         }
 	}
 
@@ -50,13 +51,23 @@ class Popup extends Component {
         localStorage.rules = JSON.stringify(rules)
     }
 
+    toggleAllRules = () => {
+        localStorage.setItem('rulesActive', !this.state.rulesActive)
+        this.setState(state => ({ rulesActive: !state.rulesActive }))
+    }
+
     render() {
-        const { rules, sourceValue, targetValue, error } = this.state
+        const { rules, sourceValue, targetValue, error, rulesActive } = this.state
 
         return (
             <div className="container">
 
-                <Header numOfActiveRedirects={rules.filter(rule => rule.active).length} handleNewRedirect={this.addRule} />
+                <Header
+                    numOfActiveRedirects={rules.filter(rule => rule.active).length}
+                    handleNewRedirect={this.addRule}
+                    toggleAllRules={this.toggleAllRules}
+                    rulesActive={rulesActive}
+                />
 
                 <Redirects rules={rules}>
                     {rules.map((rule, i) => (
@@ -66,6 +77,7 @@ class Popup extends Component {
                             toggleStatus={this.toggleStatus}
                             saveRule={this.saveRule}
                             handleDeleteRule={this.removeRule}
+                            rulesActive={rulesActive}
                         />)
                     )}
                 </Redirects>

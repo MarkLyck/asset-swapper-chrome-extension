@@ -9,9 +9,9 @@ var currVersion = getVersion();
 var prevVersion = localStorage['version'];
 if (currVersion != prevVersion) {
 	// Check if we just installed this extension.
-	if (typeof prevVersion == 'undefined') {
-		onInstall();
-	}
+	// if (typeof prevVersion == 'undefined') {
+	// 	onInstall();
+	// }
 	localStorage['version'] = currVersion;
 }
 
@@ -36,13 +36,10 @@ function wildcardToRegExp (s) {
 }
 
 chrome.webRequest.onBeforeRequest.addListener(details => {
+	if (localStorage.getItem(rulesActive)) return
 	const rules = JSON.parse(localStorage.rules)
 	return rules.reduce((acc, rule) => {
 		const sourceRegex = wildcardToRegExp(rule.source)
-		console.log(rule)
-		console.log('details.url', details.url)
-		console.log(wildcardToRegExp(rule.source))
-		console.log(rule.active, isURLValid(rule.source), sourceRegex.test(details.url), isURLValid(rule.target))
 		if (rule.active && sourceRegex.test(details.url) && isURLValid(rule.source) && isURLValid(rule.target)) {
 			let target = rule.target
 			if (!target.includes('http') && !target.includes('://')) {

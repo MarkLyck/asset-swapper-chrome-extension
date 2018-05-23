@@ -77,13 +77,13 @@ class Redirect extends Component {
     }
 
     render() {
-        const { rule, toggleStatus, handleEditRule, handleDeleteRule, index } = this.props
+        const { rule, toggleStatus, handleEditRule, handleDeleteRule, index, rulesActive } = this.props
         const { mode, sourceValue, targetValue, error } = this.state
 
         return (
             <div className="redirect">
                 <button className="status-container" onClick={() => toggleStatus(index)}>
-                    <div className={`status status-${rule.active ? 'active' : 'disabled'}`} />
+                    <div className={`status status-${rule.active && rulesActive ? 'active' : 'disabled'}`} />
                 </button>
                 <i className={`file-type-icon ${this.getIconClass(rule.source)}`} />
                 {mode !== 'editing' && <p className="url">{rule.source}</p>}

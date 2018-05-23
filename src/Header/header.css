@@ -23,7 +23,7 @@
     color: #8F8F8F;
 }
 
-.add-rule {
+.dank-button {
     font-weight: 600;
     font-size: 16px;
     display: flex;
@@ -39,7 +39,11 @@
     border-color: rgb(230, 230, 230);
 }
 
-.add-rule:hover {
+.add-rule > i {
+    margin-right: 6px;
+}
+
+.dank-button:hover {
     cursor: pointer;
     background: rgb(39, 165, 249);
     color: white;
@@ -47,7 +51,34 @@
     border-color: rgb(39, 165, 249);
 }
 
-.add-rule:active {
+.dank-button:active {
     transform: translateY(0.25rem);
     box-shadow: rgb(6, 141, 231) 0px 0px 0px 0px;
+}
+
+.action-container {
+    display: flex;
+}
+
+.power-button {
+    margin-right: 16px;
+}
+
+.power-button .on {
+    color: #12D99E;
+}
+
+.power-button .off {
+    color: #ec1b5f;
+}
+
+.power-button:hover {
+    background: white;
+    border-color: rgb(230, 230, 230);
+    box-shadow: rgb(230, 230, 230) 0px 0.25rem 0px 0px;
+}
+
+.power-button:active {
+    transform: translateY(0.25rem);
+    box-shadow: rgb(230, 230, 230) 0px 0px 0px 0px;
 }
