@@ -11,7 +11,8 @@ const Header = ({ numOfActiveRedirects, handleNewRedirect, toggleAllRules, rules
         </div>
         <div className="action-container">
             <button onClick={toggleAllRules} className="dank-button power-button">
-                <i className={`fas fa-power-off ${rulesActive ? 'on' : 'off'}`} />
+                {console.log(rulesActive === true ? 'on' : 'off')}
+                <i className={`fas fa-power-off ${rulesActive === true ? 'on' : 'off'}`} />
             </button>
             <button onClick={handleNewRedirect} className="dank-button add-rule">
                 <i className="fas fa-plus"/>Add Rule

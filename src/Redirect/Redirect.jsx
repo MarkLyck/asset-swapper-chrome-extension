@@ -1,6 +1,9 @@
 import { h, Component } from 'preact'
 import './redirect.css'
 
+import EditSVG from './edit.svg'
+import TrashSVG from './trash-alt.svg'
+
 function isURLValid(userInput) {
     var res = userInput.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
     if(res == null)
@@ -83,7 +86,7 @@ class Redirect extends Component {
         return (
             <div className="redirect">
                 <button className="status-container" onClick={() => toggleStatus(index)}>
-                    <div className={`status status-${rule.active && rulesActive ? 'active' : 'disabled'}`} />
+                    <div className={`status status-${rule.active && rulesActive === true ? 'active' : 'disabled'}`} />
                 </button>
                 <i className={`file-type-icon ${this.getIconClass(rule.source)}`} />
                 {mode !== 'editing' && <p className="url">{rule.source}</p>}
@@ -107,8 +110,8 @@ class Redirect extends Component {
 
                 <div className="actions-container">
                     {mode === 'editing' && <button onClick={this.saveRule} className="save-entry"><i className="fas fa-check"/></button>}
-                    {mode !== 'editing' && <button onClick={this.editRule} className="edit-entry"><i className="fas fa-edit"/></button>}
-                    {(mode !== 'editing' || rule.adding) && <button onClick={() => handleDeleteRule(index)} className="remove-entry"><i className="fas fa-trash-alt"/></button>}
+                    {mode !== 'editing' && <button onClick={this.editRule} className="edit-entry"><EditSVG className="svg-icon"/></button>}
+                    {(mode !== 'editing' || rule.adding) && <button onClick={() => handleDeleteRule(index)} className="remove-entry"><TrashSVG className="svg-icon" /></button>}
                 </div>
             </div>
         )

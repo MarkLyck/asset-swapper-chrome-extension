@@ -9,10 +9,14 @@ class Popup extends Component {
         this.addRule = this.addRule.bind(this)
         this.removeRule = this.removeRule.bind(this)
         this.toggleStatus = this.toggleStatus.bind(this)
+        
+        const rulesActive = localStorage.getItem('rulesActive')
+            ? JSON.parse(localStorage.getItem('rulesActive'))
+            : true
 
 		this.state = {
             rules: JSON.parse(localStorage.getItem('rules')) || [],
-            rulesActive: localStorage.getItem('rulesActive') || true,
+            rulesActive
         }
 	}
 
@@ -52,8 +56,9 @@ class Popup extends Component {
     }
 
     toggleAllRules = () => {
-        localStorage.setItem('rulesActive', !this.state.rulesActive)
-        this.setState(state => ({ rulesActive: !state.rulesActive }))
+        const rulesActive = this.state.rulesActive
+        localStorage.setItem('rulesActive', !rulesActive)
+        this.setState({ rulesActive: !rulesActive })
     }
 
     render() {
@@ -61,7 +66,6 @@ class Popup extends Component {
 
         return (
             <div className="container">
-
                 <Header
                     numOfActiveRedirects={rules.filter(rule => rule.active).length}
                     handleNewRedirect={this.addRule}

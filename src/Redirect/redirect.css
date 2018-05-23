@@ -78,20 +78,26 @@
     margin-left: 8px;
 }
 
-.actions-container i {
+.actions-container svg, .actions-container i {
     color: #C3C3C3;
+    fill: #C3C3C3;
 }
 
-.edit-entry:hover > i {
-    color: #27A5F9;
+.svg-icon {
+    height: 16px;
+    width: auto;
 }
 
-.remove-entry > i {
+.edit-entry:hover > .svg-icon {
+    fill: #27A5F9;
+}
+
+.remove-entry > .svg-icon {
     margin-left: 12px;
 }
 
-.remove-entry:hover > i {
-    color: #ec1b5f;
+.remove-entry:hover > .svg-icon {
+    fill: #ec1b5f;
 }
 
 .save-entry:hover > i {
