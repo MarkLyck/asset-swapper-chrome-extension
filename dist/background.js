@@ -36,7 +36,7 @@ function wildcardToRegExp (s) {
 }
 
 chrome.webRequest.onBeforeRequest.addListener(details => {
-	if (localStorage.getItem(rulesActive)) return
+	if (!JSON.parse(localStorage.getItem('rulesActive'))) return
 	const rules = JSON.parse(localStorage.rules)
 	return rules.reduce((acc, rule) => {
 		const sourceRegex = wildcardToRegExp(rule.source)

@@ -91,6 +91,16 @@
     list-style: none;
     box-shadow: inset 0 8px 10px -6px rgba(0,0,0,0.15);
     padding: 12px 12px 0 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.no-rules {
+    text-align: center;
+    color: #797979;
+    font-size: 16px;
+    height: 20px;
 }
 .redirect {
     padding: 8px 12px 8px 8px;

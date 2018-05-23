@@ -6,12 +6,11 @@ const Header = ({ numOfActiveRedirects, handleNewRedirect, toggleAllRules, rules
         <div className="left-content">
             <h3 className="extension-name">Asset Swapper</h3>
             <p className="num-of-redirects">
-                {rulesActive ? numOfActiveRedirects : 0} Active redirect{numOfActiveRedirects !== 1 || !rulesActive && 's'}
+                {rulesActive ? numOfActiveRedirects : 0} Active redirect{numOfActiveRedirects !== 1 || !rulesActive ? 's' : ''}
             </p>
         </div>
         <div className="action-container">
-            <button onClick={toggleAllRules} className="dank-button power-button">
-                {console.log(rulesActive === true ? 'on' : 'off')}
+            <button onClick={toggleAllRules} className={`dank-button power-button ${rulesActive === true ? 'on' : 'off'}`}>
                 <i className={`fas fa-power-off ${rulesActive === true ? 'on' : 'off'}`} />
             </button>
             <button onClick={handleNewRedirect} className="dank-button add-rule">
