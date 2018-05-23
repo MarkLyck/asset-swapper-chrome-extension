@@ -72,13 +72,24 @@
     color: #ec1b5f;
 }
 
-.power-button:hover {
-    background: white;
-    border-color: rgb(230, 230, 230);
-    box-shadow: rgb(230, 230, 230) 0px 0.25rem 0px 0px;
+.power-button.on:hover {
+    background: #ec1b5f;
+    border-color: #ec1b5f;
+    box-shadow: hsl(340, 79%, 38%) 0px 0.25rem 0px 0px;
 }
 
-.power-button:active {
+.power-button.off:hover {
+    background: #12D99E;
+    border-color: #12D99E;
+    box-shadow: #0eaf7f 0px 0.25rem 0px 0px;
+}
+
+.power-button:hover .fa-power-off {
+    color: white;
+}
+
+
+.power-button.on:active, .power-button.off:active {
     transform: translateY(0.25rem);
     box-shadow: rgb(230, 230, 230) 0px 0px 0px 0px;
 }
