@@ -43,9 +43,10 @@
 .url {
     overflow-x: auto;
     margin: 0;
-    height: 37px;
+    height: 40px;
     display: flex;
     align-items: center;
+    white-space: nowrap;
 }
 
 .url, .url-input {
