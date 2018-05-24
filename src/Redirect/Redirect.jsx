@@ -49,6 +49,10 @@ class Redirect extends Component {
     }
 
     handleSourceInput = e => {
+        if (e.code === 'Enter') {
+            this.saveRule()
+            return
+        }
         this.setState({ sourceValue: e.target.value, error: '' })
         const { index } = this.props
         const { targetValue } = this.state
@@ -58,6 +62,10 @@ class Redirect extends Component {
     }
 
     handleTargetInput = e => {
+        if (e.code === 'Enter') {
+            this.saveRule()
+            return
+        }
         this.setState({ targetValue: e.target.value, error: '' })
         const { index } = this.props
         const { sourceValue } = this.state
