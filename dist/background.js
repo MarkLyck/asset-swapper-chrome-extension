@@ -40,15 +40,14 @@ chrome.webRequest.onBeforeRequest.addListener(details => {
 	const rules = JSON.parse(localStorage.rules)
 	const numActiveRules = rules.filter(rule => rule.active).length
 
-	console.log(numActiveRules)
-
 	if (!rulesActive || !numActiveRules) {
 		chrome.browserAction.setIcon({ path: '/asset_swapper_icon_off_128.png' })
-		chrome.browserAction.setBadgeText({text: ''})
+		chrome.browserAction.setBadgeText({ text: '' })
 	} else {
 		chrome.browserAction.setIcon({ path: '/asset_swapper_icon_128.png' })
-		chrome.browserAction.setBadgeText({text: String(numActiveRules) })
+		chrome.browserAction.setBadgeText({ text: String(numActiveRules) })
 	}
+
 	if (!rulesActive) return
 	
 	return rules.reduce((acc, rule) => {
