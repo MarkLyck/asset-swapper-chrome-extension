@@ -5,11 +5,12 @@ import EditSVG from './edit.svg'
 import TrashSVG from './trash-alt.svg'
 
 function isURLValid(userInput) {
-    var res = userInput.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
-    if (res == null)
-        return false;
-    else
-        return true;
+    return true;
+    // var res = userInput.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+    // if (res == null)
+    //     return false;
+    // else
+    //     return true;
 }
 
 const isEditing = (index) => localStorage.getItem('editing') && JSON.parse(localStorage.getItem('editing')).hasOwnProperty(index)
