@@ -6,7 +6,7 @@ import TrashSVG from './trash-alt.svg'
 
 function isURLValid(userInput) {
     var res = userInput.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
-    if(res == null)
+    if (res == null)
         return false;
     else
         return true;
@@ -91,30 +91,35 @@ class Redirect extends Component {
         const { rule, toggleStatus, handleEditRule, handleDeleteRule, index, rulesActive } = this.props
         const { mode, sourceValue, targetValue, error } = this.state
 
+        let status = rule.active && rulesActive === true ? 'active' : 'disabled'
+        if (!rulesActive) status = 'off'
+         
         return (
             <div className="redirect">
-                <button className="status-container" onClick={() => toggleStatus(index)}>
-                    <div className={`status status-${rule.active && rulesActive === true ? 'active' : 'disabled'}`} />
-                </button>
-                <i className={`file-type-icon ${this.getIconClass(rule.source)}`} />
+                <button classNam e="status-container" onClick={() => toggleStatus(index)}>
+                    <div className={`status status-${status}`} />
+                </button>                                
+                <i class Name={`file-type-icon ${this.getIconClass(rule.source)}`} />
                 {mode !== 'editing' && <p className="url">{rule.source}</p>}
                 {mode === 'editing' && (
-                    <input
+                    <input  
                         className={`url-input ${error === 'source' && 'input-error'}`}
-                        type="text"
-                        value={sourceValue}
+                        type="text"                                                                
+                        value={sourceValue}                
                         onKeyUp={this.handleSourceInput}
-                    />)}
+                    />)
+                }
                 <i className="fas fa-angle-double-right" />
                 <i className={`file-type-icon ${this.getIconClass(rule.target)}`} />
                 {mode !== 'editing' && <p className="url">{rule.target}</p>}
                 {mode === 'editing' && (
-                    <input
+                    <input                                
                         className={`url-input ${error === 'target' && 'input-error'}`}
                         type="text"
-                        value={targetValue}
+                        value={targetValue}                                                                
                         onKeyUp={this.handleTargetInput}
-                    />)}
+                    />)
+                }                
 
                 <div className="actions-container">
                     {mode === 'editing' && <button onClick={this.saveRule} className="save-entry"><i className="fas fa-check"/></button>}

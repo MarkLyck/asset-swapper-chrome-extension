@@ -35,6 +35,10 @@
     background: #ec1b5f;
 }
 
+.status-off {
+    background: #b8b8b8;
+}
+
 .file-type-icon {
     margin: 0 8px 0 0;
     color: #333333;

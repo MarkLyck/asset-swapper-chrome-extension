@@ -36,8 +36,20 @@ function wildcardToRegExp (s) {
 }
 
 chrome.webRequest.onBeforeRequest.addListener(details => {
-	if (!JSON.parse(localStorage.getItem('rulesActive'))) return
+	const rulesActive = JSON.parse(localStorage.getItem('rulesActive'))
 	const rules = JSON.parse(localStorage.rules)
+	const numActiveRules = rules.filter(rule => rule.active).length
+
+	if (!rulesActive || !numActiveRules) {
+		chrome.browserAction.setIcon({ path: '/asset_swapper_icon_off_128.png' })
+		chrome.browserAction.setBadgeText({ text: '' })
+	} else {
+		chrome.browserAction.setIcon({ path: '/asset_swapper_icon_128.png' })
+		chrome.browserAction.setBadgeText({ text: String(numActiveRules) })
+	}
+
+	if (!rulesActive) return
+	
 	return rules.reduce((acc, rule) => {
 		const sourceRegex = wildcardToRegExp(rule.source)
 		if (rule.active && sourceRegex.test(details.url) && isURLValid(rule.source) && isURLValid(rule.target)) {
